@@ -1,40 +1,49 @@
 import { Component } from 'inferno';
+import Month from './month/rc-month';
+import Week from './week/rc-week';
 
-// if (year is not divisible by 4) then (it is a common year)
-// else if (year is not divisible by 100) then (it is a leap year)
-// else if (year is not divisible by 400) then (it is a common year)
-// else (it is a leap year)
-const WEEK = 7;
-const MONTHS = 12;
+const YEARVIEW = "year";
+const MONTHVIEW = "month";
+const WEEKVIEW = "week";
+const DAYVIEW = "day";
 
 class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentDate: new Date()
+      currentDate: new Date(),
+      selectedDate: new Date(),
+      view: MONTHVIEW
     };
   }
 
-  renderMonth() {
-    let month = [];
-
-  }
-
-  renderWeek() {
-    let week = [];
-    const divWidth = 100 / 7;
-    const divHeight = 100 / 4;
-    for(let i = 0; i < WEEK; i++) {
-      week.push(
-        <div style={{width:divWidth + '%', height:divHeight + '%', border: '1px solid black'}}></div>
-      );
+  getView() {
+    switch(this.state.view) {
+      case YEARVIEW: return (
+          <div></div>
+        ); 
+      case MONTHVIEW: return (
+          <Month 
+            current={this.state.currentDate}
+            selected={this.state.selectedDate} />
+        );
+      case WEEKVIEW: return (
+          <Week 
+            current={this.state.currentDate}
+            selected={this.state.selectedDate} />
+        );
+      case DAYVIEW: return (
+          <div></div>
+        );
+      default: break;
     }
   }
 
   render() {
+    const calendarView = this.getView();
     return (
-      <section style={{width:this.props.width, height:this.props.height}}>
-        {this.renderWeek()}
+      <section style={this.props.calStyle}>
+        {calendarView}
       </section>
     );
   }
