@@ -25,3 +25,20 @@ Calendar component to be used with inferno applications.
   </body>
 </html>
 ```
+# Getting Started
+1. Clone this repo 
+2. Do an npm install
+``` bash
+npm install
+```
+3. Run it
+``` bash
+npm start
+```
+4. Build it for distribution
+``` bash
+npm run build
+```
+
+If you just want to use it then download inferno-calendar.js from the dist folder.
+Additional features to be added :)

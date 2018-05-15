@@ -7,6 +7,6 @@ const calStyle = {
 };
 
 render(
-  <Calendar calendarStyle={calendarStyle} />, 
+  <Calendar calendarStyle={calStyle} />, 
   document.getElementById('app')
 );
