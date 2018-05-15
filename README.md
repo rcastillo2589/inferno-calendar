@@ -1,3 +1,8 @@
+# Inferno Calendar
+Calendar component to be used with inferno applications.
+
+# Example
+``` html
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,3 +24,4 @@
     </script>
   </body>
 </html>
+```
