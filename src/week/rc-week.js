@@ -1,35 +1,44 @@
 import { Component } from 'inferno';
 import { moveDate } from '../shared/util';
 import Day from '../day/rc-day';
-import './rc-week.css';
 
 const DAYS = 7;
+const weekContainer = {
+  width: '100%',
+  borderTop: '1px solid #cccccc'
+};
 
 class Week extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isWeekView: false,
-      startDay: props.start
+      isWeekView: false
     };
   }
 
-  renderWeek() {
+  renderWeek(startDay, selectedMonth) {
     let days = [];
     for(let i = 0; i < DAYS; i++) {
-      let dayNum = moveDate(this.state.startDay, i);
-      days.push(
-        <Day day={dayNum} />
-      );
+      let dayNum = moveDate(startDay, i);
+      if(dayNum.getMonth() !== selectedMonth) {
+        days.push(
+          <Day day={dayNum} highlight={true} />
+        );
+      } else {
+        days.push(
+          <Day day={dayNum} highlight={false} />
+        );
+      }
     }
     return days;
   }
 
   render() {
-    const week = this.renderWeek();
+    const month = this.props.selected.getMonth();
+    const week = this.renderWeek(this.props.start, month);
     const rowHeight = (100 / this.props.number) + '%';
     return (
-      <div style={{height:rowHeight}} className="week-container-full">
+      <div style={Object.assign({height: rowHeight}, weekContainer)}>
         {week}
       </div>
     );

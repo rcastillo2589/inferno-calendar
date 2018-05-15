@@ -42,7 +42,7 @@ class Calendar extends Component {
   render() {
     const calendarView = this.getView();
     return (
-      <section style={this.props.calStyle}>
+      <section style={this.props.calendarStyle}>
         {calendarView}
       </section>
     );

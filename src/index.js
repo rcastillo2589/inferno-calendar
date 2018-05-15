@@ -1,12 +1,12 @@
 import { render } from 'inferno';
 import Calendar from './calendar';
 
-const calendarStyle = {
-  width: "75%",
+const calStyle = {
+  width: "50%",
   height: "500px"
 };
 
 render(
-  <Calendar calStyle={calendarStyle} />, 
+  <Calendar calendarStyle={calendarStyle} />, 
   document.getElementById('app')
 );

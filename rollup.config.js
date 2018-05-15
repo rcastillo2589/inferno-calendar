@@ -1,13 +1,15 @@
 import babel from "rollup-plugin-babel";
 
 export default {
-  input: "index.js",
+  input: "index.js",  // Starting point for the library
   output: {
-    file: 'dist/bundle.js',
-    name: 'bundle.js',
-    format: 'umd'
+    file: 'dist/inferno-calendar.js', // output file name
+    name: 'InfernoCalendar',  // Global name for this library
+    format: 'umd',
+    globals: {
+      inferno: 'Inferno'    // Dependent global
+    }
   },
-  external: ['inferno'],
   plugins: [ babel({
     exclude: 'node_modules/**'
   })]
